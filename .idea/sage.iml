@@ -168,6 +168,12 @@
       <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage/vendor/voku/portable-ascii" />
+      <excludeFolder url="file://$MODULE_DIR$/.ddev/.dbimageBuild" />
+      <excludeFolder url="file://$MODULE_DIR$/.ddev/.homeadditions" />
+      <excludeFolder url="file://$MODULE_DIR$/.ddev/.webimageBuild" />
+      <excludeFolder url="file://$MODULE_DIR$/.ddev/db_snapshots" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage/public" />
+      <excludeFolder url="file://$MODULE_DIR$/wp-content/themes/sage/vendor" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
