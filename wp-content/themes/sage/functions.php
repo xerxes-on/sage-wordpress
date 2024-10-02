@@ -99,3 +99,11 @@ function styles_css():void {
     wp_enqueue_style( 'styles', get_template_directory_uri() . '/resources/styles/styles.css', );
 }
 add_action( 'get_footer', 'styles_css' );
+
+function single_post_message($classes) {
+    if (is_single()) {
+        $classes[] = 'hey-dude-it-is-blog';
+    }
+    return $classes;
+}
+add_filter('body_class', 'single_post_message');
