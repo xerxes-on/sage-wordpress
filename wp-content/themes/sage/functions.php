@@ -54,6 +54,7 @@ if (! function_exists('\Roots\bootloader')) {
 |
 */
 
+
 collect(['setup', 'filters'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
@@ -63,3 +64,11 @@ collect(['setup', 'filters'])
             );
         }
     });
+
+function sv_theme_scripts(): void {
+    wp_enqueue_style( 'output', get_template_directory_uri() . '/style.css', array() );
+}
+add_action( 'wp_enqueue_scripts', 'sv_theme_scripts' );
+
+add_filter('wp_title', 'custom_homepage_title', 10, 2);
+
