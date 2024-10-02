@@ -95,15 +95,34 @@ function critical_css():void {
 }
 add_action( 'wp_enqueue_scripts', 'critical_css' );
 
-function styles_css():void {
+function load_assets_in_footer():void {
     wp_enqueue_style( 'styles', get_template_directory_uri() . '/resources/styles/styles.css', );
 }
-add_action( 'get_footer', 'styles_css' );
+add_action( 'get_footer', 'load_assets_in_footer' );
 
 function single_post_message($classes) {
-    if (is_single()) {
+    if (is_front_page() && is_home() && is_ssl()) {
         $classes[] = 'hey-dude-it-is-blog';
     }
     return $classes;
 }
 add_filter('body_class', 'single_post_message');
+
+function add_one_day($output): string {
+    $date = new DateTime($output);
+    $date->modify('+1 day');
+    return $date->format('Y-m-d');
+}
+add_filter('add_one_day_to_current_day', 'add_one_day');
+function display_current_day_with_filter() {
+    $current_day = date('Y-m-d');
+    return apply_filters('add_one_day', $current_day);
+}
+add_shortcode('current_day', 'display_current_day_with_filter');
+function allow_shortcodes_in_title($title): string {
+    return do_shortcode($title);
+}
+add_filter('the_title', 'allow_shortcodes_in_title');
+
+
+
