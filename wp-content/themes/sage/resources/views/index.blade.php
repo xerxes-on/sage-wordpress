@@ -10,11 +10,12 @@
 
     {!! get_search_form(false) !!}
   @endif
-
-  @while( have_posts()) @php(the_post())
-    @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
-  @endwhile
-
+  <div class="flex flex-col">
+    @while( have_posts())
+      @php(the_post())
+      @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
+    @endwhile
+  </div>
   {!! get_the_posts_navigation() !!}
 @endsection
 

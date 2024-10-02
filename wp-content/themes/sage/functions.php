@@ -70,5 +70,32 @@ function sv_theme_scripts(): void {
 }
 add_action( 'wp_enqueue_scripts', 'sv_theme_scripts' );
 
-add_filter('wp_title', 'custom_homepage_title', 10, 2);
+add_filter('wp_title', 'display_message_after_title', 10, 2);
 
+function display_message_after_title($title, $sep) {
+    if (is_home() || is_front_page()) {
+        $title .= '-> ' . 'You are on homepage';
+    }
+    return $title;
+}
+
+function learn_more($more) {
+    if (!is_single() && (is_archive() || is_home())) {
+        global $post;
+        return '... <a href="' . get_permalink($post->ID) . '"
+        class=" hover:text-blue-50 hover:text-lg">
+        Learn More</a>';
+    }
+    return $more;
+}
+add_filter('excerpt_more', 'learn_more');
+
+function critical_css():void {
+    wp_enqueue_style( 'critical', get_template_directory_uri() . '/resources/styles/critical.css', );
+}
+add_action( 'wp_enqueue_scripts', 'critical_css' );
+
+function styles_css():void {
+    wp_enqueue_style( 'styles', get_template_directory_uri() . '/resources/styles/styles.css', );
+}
+add_action( 'get_footer', 'styles_css' );

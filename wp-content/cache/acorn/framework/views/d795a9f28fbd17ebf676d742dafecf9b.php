@@ -2,6 +2,8 @@
   <a class="brand" href="<?php echo e(home_url('/')); ?>">
     <?php echo $siteName; ?>
 
+    <?php echo e(wp_title()); ?>
+
   </a>
 
   <?php if( has_nav_menu('primary_navigation')): ?>

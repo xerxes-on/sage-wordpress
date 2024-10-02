@@ -1,6 +1,7 @@
 <header class="banner">
   <a class="brand" href="{{ home_url('/') }}">
     {!! $siteName !!}
+    {{ wp_title()}}
   </a>
 
   @if ( has_nav_menu('primary_navigation'))

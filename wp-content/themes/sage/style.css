@@ -570,12 +570,32 @@ video {
   position: static;
 }
 
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.bottom-3 {
+  bottom: 0.75rem;
+}
+
+.right-3 {
+  right: 0.75rem;
+}
+
 .m-5 {
   margin: 1.25rem;
 }
 
 .m-3 {
   margin: 0.75rem;
+}
+
+.m-10 {
+  margin: 2.5rem;
 }
 
 .ml-10 {
@@ -586,8 +606,16 @@ video {
   display: block;
 }
 
+.inline {
+  display: inline;
+}
+
 .flex {
   display: flex;
+}
+
+.grid {
+  display: grid;
 }
 
 .w-1\/2 {
@@ -750,6 +778,11 @@ video {
 
 .outline {
   outline-style: solid;
+}
+
+.hover\:text-gray-50:hover {
+  --tw-text-opacity: 1;
+  color: rgb(249 250 251 / var(--tw-text-opacity));
 }
 
 .focus\:not-sr-only:focus {
