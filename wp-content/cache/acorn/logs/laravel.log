@@ -1,0 +1,60 @@
+[2024-10-01 10:27:24] laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at /var/www/html/vendor/illuminate/log/LogManager.php:212)
+[stacktrace]
+#0 /var/www/html/vendor/illuminate/log/LogManager.php(137): Illuminate\\Log\\LogManager->resolve(NULL, NULL)
+#1 /var/www/html/vendor/illuminate/log/LogManager.php(124): Illuminate\\Log\\LogManager->get(NULL)
+#2 /var/www/html/vendor/illuminate/log/LogManager.php(681): Illuminate\\Log\\LogManager->driver()
+#3 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Exceptions/Handler.php(317): Illuminate\\Log\\LogManager->error('Undefined const...', Array)
+#4 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Exceptions/Handler.php(278): Illuminate\\Foundation\\Exceptions\\Handler->reportThrowable(Object(Error))
+#5 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Console/Kernel.php(523): Illuminate\\Foundation\\Exceptions\\Handler->report(Object(Error))
+#6 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Console/Kernel.php(203): Illuminate\\Foundation\\Console\\Kernel->reportException(Object(Error))
+#7 /var/www/html/vendor/roots/acorn/src/Roots/Acorn/Bootloader.php(125): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 /var/www/html/vendor/roots/acorn/src/Roots/Acorn/Bootloader.php(98): Roots\\Acorn\\Bootloader->bootConsole()
+#9 /var/www/html/vendor/roots/acorn/bin/acorn(25): Roots\\Acorn\\Bootloader->boot()
+#10 /var/www/html/vendor/roots/acorn/bin/acorn(26): {closure}()
+#11 /var/www/html/vendor/bin/acorn(119): include('/var/www/html/v...')
+#12 {main}
+"} 
+[2024-10-01 10:27:24] laravel.ERROR: Undefined constant "DB_CHARSET" {"exception":"[object] (Error(code: 0): Undefined constant \"DB_CHARSET\" at /var/www/html/vendor/roots/acorn/config/database.php:53)
+[stacktrace]
+#0 /var/www/html/vendor/roots/acorn/src/Roots/Acorn/Bootstrap/LoadConfiguration.php(63): require()
+#1 /var/www/html/vendor/roots/acorn/src/Roots/Acorn/Bootstrap/LoadConfiguration.php(36): Roots\\Acorn\\Bootstrap\\LoadConfiguration->loadConfigurationFiles(Object(Roots\\Acorn\\Application), Object(Illuminate\\Config\\Repository))
+#2 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Application.php(263): Roots\\Acorn\\Bootstrap\\LoadConfiguration->bootstrap(Object(Roots\\Acorn\\Application))
+#3 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Console/Kernel.php(447): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#4 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Console/Kernel.php(199): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#5 /var/www/html/vendor/roots/acorn/src/Roots/Acorn/Bootloader.php(125): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 /var/www/html/vendor/roots/acorn/src/Roots/Acorn/Bootloader.php(98): Roots\\Acorn\\Bootloader->bootConsole()
+#7 /var/www/html/vendor/roots/acorn/bin/acorn(25): Roots\\Acorn\\Bootloader->boot()
+#8 /var/www/html/vendor/roots/acorn/bin/acorn(26): {closure}()
+#9 /var/www/html/vendor/bin/acorn(119): include('/var/www/html/v...')
+#10 {main}
+"} 
+[2024-10-01 10:27:47] laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at /var/www/html/vendor/illuminate/log/LogManager.php:212)
+[stacktrace]
+#0 /var/www/html/vendor/illuminate/log/LogManager.php(137): Illuminate\\Log\\LogManager->resolve(NULL, NULL)
+#1 /var/www/html/vendor/illuminate/log/LogManager.php(124): Illuminate\\Log\\LogManager->get(NULL)
+#2 /var/www/html/vendor/illuminate/log/LogManager.php(681): Illuminate\\Log\\LogManager->driver()
+#3 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Exceptions/Handler.php(317): Illuminate\\Log\\LogManager->error('Undefined const...', Array)
+#4 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Exceptions/Handler.php(278): Illuminate\\Foundation\\Exceptions\\Handler->reportThrowable(Object(Error))
+#5 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Console/Kernel.php(523): Illuminate\\Foundation\\Exceptions\\Handler->report(Object(Error))
+#6 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Console/Kernel.php(203): Illuminate\\Foundation\\Console\\Kernel->reportException(Object(Error))
+#7 /var/www/html/vendor/roots/acorn/src/Roots/Acorn/Bootloader.php(125): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 /var/www/html/vendor/roots/acorn/src/Roots/Acorn/Bootloader.php(98): Roots\\Acorn\\Bootloader->bootConsole()
+#9 /var/www/html/vendor/roots/acorn/bin/acorn(25): Roots\\Acorn\\Bootloader->boot()
+#10 /var/www/html/vendor/roots/acorn/bin/acorn(26): {closure}()
+#11 /var/www/html/vendor/bin/acorn(119): include('/var/www/html/v...')
+#12 {main}
+"} 
+[2024-10-01 10:27:47] laravel.ERROR: Undefined constant "DB_CHARSET" {"exception":"[object] (Error(code: 0): Undefined constant \"DB_CHARSET\" at /var/www/html/vendor/roots/acorn/config/database.php:53)
+[stacktrace]
+#0 /var/www/html/vendor/roots/acorn/src/Roots/Acorn/Bootstrap/LoadConfiguration.php(63): require()
+#1 /var/www/html/vendor/roots/acorn/src/Roots/Acorn/Bootstrap/LoadConfiguration.php(36): Roots\\Acorn\\Bootstrap\\LoadConfiguration->loadConfigurationFiles(Object(Roots\\Acorn\\Application), Object(Illuminate\\Config\\Repository))
+#2 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Application.php(263): Roots\\Acorn\\Bootstrap\\LoadConfiguration->bootstrap(Object(Roots\\Acorn\\Application))
+#3 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Console/Kernel.php(447): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#4 /var/www/html/vendor/roots/acorn/src/Illuminate/Foundation/Console/Kernel.php(199): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#5 /var/www/html/vendor/roots/acorn/src/Roots/Acorn/Bootloader.php(125): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 /var/www/html/vendor/roots/acorn/src/Roots/Acorn/Bootloader.php(98): Roots\\Acorn\\Bootloader->bootConsole()
+#7 /var/www/html/vendor/roots/acorn/bin/acorn(25): Roots\\Acorn\\Bootloader->boot()
+#8 /var/www/html/vendor/roots/acorn/bin/acorn(26): {closure}()
+#9 /var/www/html/vendor/bin/acorn(119): include('/var/www/html/v...')
+#10 {main}
+"} 

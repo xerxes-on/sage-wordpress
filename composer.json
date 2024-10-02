@@ -1,0 +1,6 @@
+{
+    "require": {
+        "roots/sage": "^10.8",
+        "roots/acorn": "^4.3"
+    }
+}
