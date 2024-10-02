@@ -14,7 +14,7 @@ define('DB_PASSWORD', 'db');
 define('DB_HOST', 'db');
 define('DB_NAME', 'db');
 
-
+$table_prefix = 'wp_';
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
 
