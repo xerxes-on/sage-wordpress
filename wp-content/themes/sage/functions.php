@@ -98,7 +98,7 @@ add_action( 'wp_enqueue_scripts', 'critical_css' );
 function load_assets_in_footer():void {
     wp_enqueue_style( 'styles', get_template_directory_uri() . '/resources/styles/styles.css', );
 }
-add_action( 'get_footer', 'load_assets_in_footer' );
+add_action( 'wp_footer', 'load_assets_in_footer' );
 
 function single_post_message($classes) {
     if (is_front_page() && is_home() && is_ssl()) {
@@ -108,15 +108,11 @@ function single_post_message($classes) {
 }
 add_filter('body_class', 'single_post_message');
 
-function add_one_day($output): string {
-    $date = new DateTime($output);
-    $date->modify('+1 day');
-    return $date->format('Y-m-d');
-}
-add_filter('add_one_day_to_current_day', 'add_one_day');
-function display_current_day_with_filter() {
+function display_current_day_with_filter(): string {
     $current_day = date('Y-m-d');
-    return apply_filters('add_one_day', $current_day);
+    $next_date = new DateTime($current_day);
+    $next_date->modify('+1 day');
+    return $next_date->format('Y-m-d');
 }
 add_shortcode('current_day', 'display_current_day_with_filter');
 function allow_shortcodes_in_title($title): string {
