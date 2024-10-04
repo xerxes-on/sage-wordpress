@@ -124,5 +124,11 @@ function allow_shortcodes_in_title($title): string {
 }
 add_filter('the_title', 'allow_shortcodes_in_title');
 
+add_action('after_setup_theme', function () {
+    if (!is_plugin_active('custom-plugin/custom-plugin.php')) {
+        activate_plugin('custom-plugin/custom-plugin.php');
+    }
+});
+
 
 

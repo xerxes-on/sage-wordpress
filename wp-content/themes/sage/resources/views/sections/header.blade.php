@@ -1,4 +1,4 @@
-<header class="banner">
+<header class="banner relative">
   <a class="brand" href="{{ home_url('/') }}">
     {!! $siteName !!}
     {{ wp_title()}}

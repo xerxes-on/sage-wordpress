@@ -5,7 +5,7 @@
     <?php echo e(wp_title()); ?>
 
   </a>
-  <span class="absolute right-10 bottom-8" >Today is [current_day]</span>
+
   <?php if( has_nav_menu('primary_navigation')): ?>
     <nav class="nav-primary bg-violet-400 text-bold text-gray-50 text-2xl"
          aria-label="<?php echo e(wp_get_nav_menu_name('primary_navigation')); ?>"
