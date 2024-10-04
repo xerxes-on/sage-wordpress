@@ -108,11 +108,15 @@ function single_post_message($classes) {
 }
 add_filter('body_class', 'single_post_message');
 
-function display_current_day_with_filter(): string {
+function add_one_day_function($output): string {
+    $date = new DateTime($output);
+    $date->modify('+1 day');
+    return $date->format('Y-m-d');
+}
+add_filter('add_one_day', 'add_one_day_function');
+function display_current_day_with_filter() {
     $current_day = date('Y-m-d');
-    $next_date = new DateTime($current_day);
-    $next_date->modify('+1 day');
-    return $next_date->format('Y-m-d');
+    return apply_filters('add_one_day', $current_day);
 }
 add_shortcode('current_day', 'display_current_day_with_filter');
 function allow_shortcodes_in_title($title): string {
