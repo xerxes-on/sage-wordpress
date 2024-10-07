@@ -9,24 +9,19 @@
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
-define('DB_USER', 'db');
-define('DB_PASSWORD', 'db');
-define('DB_HOST', 'db');
-define('DB_NAME', 'db');
 
-$table_prefix = 'wp_';
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
 
 /** Authentication Unique Keys and Salts. */
-define( 'AUTH_KEY', 'WbLHJzWuqHGOuxvxnZVNyVoavFTHjFYcXxiIceZVgadbkfxZPkYsXhWjFbycoKUY' );
-define( 'SECURE_AUTH_KEY', 'DhrstldJYLYaCOuiIDQJvpsaobawAuKnhRSBjMWdeLIjCGzsRJvPQqhxtbXOxeea' );
-define( 'LOGGED_IN_KEY', 'ODYjTFkXLkFqKmOBzroiqfkpYdrzsmfhkfMqLIRUwPgivNknFlaeBZKpSZPXvUtR' );
-define( 'NONCE_KEY', 'iDnocpRIaoETNvmrBEmvLXRdciGLjmouvRCqybetTVJTYenWlBdRAYLQjznqrdDs' );
-define( 'AUTH_SALT', 'wMotGtrFpLLqMyANDKuyxFgGUvRCkxKgGgpYoEKwzoNlhCCFGtvrXflhLuRxPaJu' );
-define( 'SECURE_AUTH_SALT', 'rTeQPVaeNeEAZgBkVnWzNKTAtazxNejXwHEjeoBWsnkcGjWQYeKIPhaGPWWCPNlB' );
-define( 'LOGGED_IN_SALT', 'biNpJuFWjMxoLepKQpQQWZtxYhandQPPHpYOqnxRGjRgqwWQmNZVsZDuhrDjdHxE' );
-define( 'NONCE_SALT', 'CMvwvhnEvwXfHDruKuhmcFQxpdlnbBiZmrpNXDpCykSCWiQkQZMQWwhFfLfffzfO' );
+define( 'AUTH_KEY', 'KslroQirgGNfLTrvFYWprczOzZiznJZrskhRtrOwXfaYDkbHXtMnefSVZkgXvpZb' );
+define( 'SECURE_AUTH_KEY', 'sslsbcUvSxRNAhgIYUoIwVlMvOHFrjiAWLJnSYNfCslJgdoAqnwHgURqAltIgwrH' );
+define( 'LOGGED_IN_KEY', 'RIbcRXLrYJjVDBeFGzwUsXmMRBObNJGTfCuWSSbXENhiNdzKPaFYijIxhyKkjCVh' );
+define( 'NONCE_KEY', 'HlTvrBMvAHMCvwXYMuwZTYZvWuEiwAdGFtdHIpgehFgJBPrnxttqgJLjzRfvngQc' );
+define( 'AUTH_SALT', 'gnqHGVjyZsOuUjuwnRpyeMgPaLWXcwbfInKdDaHYeMIhXfUFmDzPICxDEMxRbzow' );
+define( 'SECURE_AUTH_SALT', 'cwGNuxKBQtkdyWboJyMaPAMARrprcuKPoFnvgDTmqTLYbucHkBNEyHkDLxNyiDLW' );
+define( 'LOGGED_IN_SALT', 'slDhOrRXLymczpOxmbqHpbEVsSWIJgqiDVKIkhCHOCorMiJtcQEXFXvOvVwmrppJ' );
+define( 'NONCE_SALT', 'lPmHKUWqCBJGZDxXaYErDkRcAoWqkZujZzYNssuntYTXJbYmDPhIBgrTwSQfNjJI' );
 
 /* Add any custom values between this line and the "stop editing" line. */
 

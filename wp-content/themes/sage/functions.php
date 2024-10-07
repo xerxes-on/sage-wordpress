@@ -79,26 +79,29 @@ function display_message_after_title($title, $sep) {
     return $title;
 }
 
-function learn_more($more) {
+
+add_filter('the_excerpt', function($excerpt) {
     if (!is_single() && (is_archive() || is_home())) {
         global $post;
-        return '... <a href="' . get_permalink($post->ID) . '"
-        class=" hover:text-blue-50 hover:text-lg">
-        Learn More</a>';
+        return $excerpt. '<a href="' . get_permalink($post->ID) . '">
+                                  Learn More</a>';
     }
-    return $more;
-}
-add_filter('excerpt_more', 'learn_more');
+    return $excerpt;
+});
 
 function critical_css():void {
     wp_enqueue_style( 'critical', get_template_directory_uri() . '/resources/styles/critical.css', );
 }
 add_action( 'wp_enqueue_scripts', 'critical_css' );
 
-function load_assets_in_footer():void {
-    wp_enqueue_style( 'styles', get_template_directory_uri() . '/resources/styles/styles.css', );
-}
-add_action( 'wp_footer', 'load_assets_in_footer' );
+
+
+add_action('load_footer_assets', function () {
+    wp_enqueue_style('footer-styles', get_template_directory_uri() . '/resources/styles/styles.css');
+});
+add_action('wp_footer', function() {
+    do_action('load_footer_assets');
+});
 
 function single_post_message($classes) {
     if (is_front_page() && is_home() && is_ssl()) {
@@ -124,11 +127,6 @@ function allow_shortcodes_in_title($title): string {
 }
 add_filter('the_title', 'allow_shortcodes_in_title');
 
-add_action('after_setup_theme', function () {
-    if (!is_plugin_active('custom-plugin/custom-plugin.php')) {
-        activate_plugin('custom-plugin/custom-plugin.php');
-    }
-});
 
 
 
