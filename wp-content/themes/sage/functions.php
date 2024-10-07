@@ -54,6 +54,7 @@ if (! function_exists('\Roots\bootloader')) {
 |
 */
 
+
 collect(['setup', 'filters'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
@@ -63,3 +64,69 @@ collect(['setup', 'filters'])
             );
         }
     });
+
+function sv_theme_scripts(): void {
+    wp_enqueue_style( 'output', get_template_directory_uri() . '/style.css', array() );
+}
+add_action( 'wp_enqueue_scripts', 'sv_theme_scripts' );
+
+add_filter('wp_title', 'display_message_after_title', 10, 2);
+
+function display_message_after_title($title, $sep) {
+    if (is_home() || is_front_page()) {
+        $title .= '-> ' . 'You are on homepage';
+    }
+    return $title;
+}
+
+
+add_filter('the_excerpt', function($excerpt) {
+    if (!is_single() && (is_archive() || is_home())) {
+        global $post;
+        return $excerpt. '<a href="' . get_permalink($post->ID) . '">
+                                  Learn More</a>';
+    }
+    return $excerpt;
+});
+
+function critical_css():void {
+    wp_enqueue_style( 'critical', get_template_directory_uri() . '/resources/styles/critical.css', );
+}
+add_action( 'wp_enqueue_scripts', 'critical_css' );
+
+
+
+add_action('load_footer_assets', function () {
+    wp_enqueue_style('footer-styles', get_template_directory_uri() . '/resources/styles/styles.css');
+});
+add_action('wp_footer', function() {
+    do_action('load_footer_assets');
+});
+
+function single_post_message($classes) {
+    if (is_front_page() && is_home() && is_ssl()) {
+        $classes[] = 'hey-dude-it-is-blog';
+    }
+    return $classes;
+}
+add_filter('body_class', 'single_post_message');
+
+function add_one_day_function($output): string {
+    $date = new DateTime($output);
+    $date->modify('+1 day');
+    return $date->format('Y-m-d');
+}
+add_filter('add_one_day', 'add_one_day_function');
+function display_current_day_with_filter() {
+    $current_day = date('Y-m-d');
+    return apply_filters('add_one_day', $current_day);
+}
+add_shortcode('current_day', 'display_current_day_with_filter');
+function allow_shortcodes_in_title($title): string {
+    return do_shortcode($title);
+}
+add_filter('the_title', 'allow_shortcodes_in_title');
+
+
+
+
