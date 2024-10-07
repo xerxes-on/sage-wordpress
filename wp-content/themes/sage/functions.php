@@ -127,6 +127,36 @@ function allow_shortcodes_in_title($title): string {
 }
 add_filter('the_title', 'allow_shortcodes_in_title');
 
+//add a taxonomy
 
+function create_my_custom_taxonomy(): void {
+    $labels = array(
+        'name'              => _x( 'My custom sections', 'taxonomy general name', 'textdomain' ),
+        'singular_name'     => _x( 'Section', 'taxonomy singular name', 'textdomain' ),
+        'search_items'      => __( 'Search sections', 'textdomain' ),
+        'all_items'         => __( 'All sections', 'textdomain' ),
+        'parent_item'       => __( 'Parent section', 'textdomain' ),
+        'parent_item_colon' => __( 'Parent section:', 'textdomain' ),
+        'edit_item'         => __( 'Edit section', 'textdomain' ),
+        'update_item'       => __( 'Update section', 'textdomain' ),
+        'add_new_item'      => __( 'Add New section', 'textdomain' ),
+        'new_item_name'     => __( 'New sections name', 'textdomain' ),
+        'menu_name'         => __( 'Custom Sections', 'textdomain' ),
+    );
+
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_admin_column' => true,
+        'query_var'         => true,
+    );
+
+    register_taxonomy( 'section', 'my-custom-type-1', $args );
+
+    unset( $args );
+    unset( $labels );
+
+}
+add_action( 'init', 'create_my_custom_taxonomy' );
 
 
