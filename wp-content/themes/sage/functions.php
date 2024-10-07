@@ -159,4 +159,8 @@ function create_my_custom_taxonomy(): void {
 }
 add_action( 'init', 'create_my_custom_taxonomy' );
 
+if ( file_exists( get_template_directory() . '/options.php' ) ) {
+    include get_template_directory() . '/options.php';
+}
+
 
