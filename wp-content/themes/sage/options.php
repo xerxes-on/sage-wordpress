@@ -57,9 +57,9 @@ add_action( 'init', function () {
     if ( isset( $_POST['uploaded'] ) ) {
         $file = wp_handle_upload( $_FILES['photo'], [ 'test_form' => false ] );
         update_option( 'photo', $file['url'] );
+        update_option('full_name', $_POST['full_name']);
+        update_option('gender', $_POST['gender']);
     }
-    update_option('full_name', $_POST['full_name']);
-    update_option('gender', $_POST['gender']);
 } )
 
 
