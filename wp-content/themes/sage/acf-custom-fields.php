@@ -18,7 +18,7 @@ add_action( 'acf/init', function () {
                 'label'     => 'Related CPT 2',
                 'name'      => 'related_cpt2',
                 'type'      => 'relationship',
-                'post_type' => [ 'custom_post_type_2' ],
+                'post_type' =>  'my-custom-type-2',
             ),
         ),
         'location' => array(
@@ -102,3 +102,17 @@ add_action( 'acf/init', function () {
     ) );
 
 } );
+add_filter('acf/fields/relationship/query/key=field_relation_cpt1', function($args, $field, $post_id) {
+    $args['meta_query'] = [
+        [
+            'key'     => 'custom_select_field',
+            'value'   => 'type_2',
+            'compare' => '=='
+        ]
+    ];
+    return $args;
+}, 10, 3);
+
+add_filter('acf/fields/relationship/result/key=field_relation_cpt1', function($title, $post, $field, $post_id) {
+    return $title . ' (' . $post->ID . ')';
+}, 10, 4);
