@@ -80,6 +80,7 @@ add_action( 'acf/init', function () {
                 'instructions'  => 'Image width should be 48px, and height should be max 100px.',
                 'return_format' => 'array',
                 'min_width'     => 48,
+                'max_width'     =>48,
                 'max_height'    => 100,
             ),
             array(
