@@ -162,5 +162,8 @@ add_action( 'init', 'create_my_custom_taxonomy' );
 if ( file_exists( get_template_directory() . '/options.php' ) ) {
     include get_template_directory() . '/options.php';
 }
+if ( file_exists( get_template_directory() . '/acf-custom-fields.php' ) ) {
+    include get_template_directory() . '/acf-custom-fields.php';
+}
 
 

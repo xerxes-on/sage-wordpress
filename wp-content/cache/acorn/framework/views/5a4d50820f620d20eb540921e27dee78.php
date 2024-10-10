@@ -32,8 +32,8 @@
       <?php echo $__env->make('sections.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     </div>
 
-    <?php (do_action('get_footer')); ?>
-    <?php (wp_footer()); ?>
+    <?php ( do_action('get_footer')); ?>
+    <?php ( wp_footer()); ?>
   </body>
 </html>
 <?php /**PATH /var/www/html/wp-content/themes/sage/resources/views/layouts/app.blade.php ENDPATH**/ ?>
