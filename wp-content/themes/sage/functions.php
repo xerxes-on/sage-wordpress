@@ -208,3 +208,36 @@ function enqueue_time_locale_scripts(): void {
 
 add_action( 'wp_enqueue_scripts', 'enqueue_time_locale_scripts' );
 
+//task 2
+add_action( 'rest_api_init', function () {
+    register_rest_route( 'task2', '/concat', [
+            'methods'=> 'GET',
+            'callback'=> function ( $request ) {
+                    $string = $request['string_param'];
+                    $int    = $request['int_param'];
+                    return rest_ensure_response( $string . $int );
+                },
+            'permission_callback' => function ( $request ) {
+                    return isset( $request['key'] ) && $request['key'] === 'my_key';
+                },
+            'args'=> [
+                'string_param' => [
+                    'required' => true,
+                    'validate_callback' => function ( $param ) {
+                        return is_string( $param ) && strlen( $param ) > 10;
+                    },
+                ],
+                'int_param'    => [
+                    'required'          => true,
+                    'validate_callback' => function ( $param ) {
+                        return is_numeric( $param ) && intval( $param ) < 123;
+                    },
+                ],
+            ]
+        ]
+    );
+} );
+
+//https://sage.ddev.site/wp-json/task2/concat?string_param=This_is_my_string&int_param=120&key=my_key
+
+
