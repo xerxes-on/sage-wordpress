@@ -11,8 +11,8 @@
 |
 */
 
-if (! file_exists($composer = __DIR__.'/vendor/autoload.php')) {
-    wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'sage'));
+if ( ! file_exists( $composer = __DIR__ . '/vendor/autoload.php' ) ) {
+    wp_die( __( 'Error locating autoloader. Please run <code>composer install</code>.', 'sage' ) );
 }
 
 require $composer;
@@ -29,13 +29,13 @@ require $composer;
 |
 */
 
-if (! function_exists('\Roots\bootloader')) {
+if ( ! function_exists( '\Roots\bootloader' ) ) {
     wp_die(
-        __('You need to install Acorn to use this theme.', 'sage'),
+        __( 'You need to install Acorn to use this theme.', 'sage' ),
         '',
         [
-            'link_url' => 'https://roots.io/acorn/docs/installation/',
-            'link_text' => __('Acorn Docs: Installation', 'sage'),
+            'link_url'  => 'https://roots.io/acorn/docs/installation/',
+            'link_text' => __( 'Acorn Docs: Installation', 'sage' ),
         ]
     );
 }
@@ -55,77 +55,88 @@ if (! function_exists('\Roots\bootloader')) {
 */
 
 
-collect(['setup', 'filters'])
-    ->each(function ($file) {
-        if (! locate_template($file = "app/{$file}.php", true, true)) {
+collect( [ 'setup', 'filters' ] )
+    ->each( function ( $file ) {
+        if ( ! locate_template( $file = "app/{$file}.php", true, true ) ) {
             wp_die(
-                /* translators: %s is replaced with the relative file path */
-                sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file)
+            /* translators: %s is replaced with the relative file path */
+                sprintf( __( 'Error locating <code>%s</code> for inclusion.', 'sage' ), $file )
             );
         }
-    });
+    } );
 
 function sv_theme_scripts(): void {
     wp_enqueue_style( 'output', get_template_directory_uri() . '/style.css', array() );
 }
+
 add_action( 'wp_enqueue_scripts', 'sv_theme_scripts' );
 
-add_filter('wp_title', 'display_message_after_title', 10, 2);
+add_filter( 'wp_title', 'display_message_after_title', 10, 2 );
 
-function display_message_after_title($title, $sep) {
-    if (is_home() || is_front_page()) {
+function display_message_after_title( $title, $sep ) {
+    if ( is_home() || is_front_page() ) {
         $title .= '-> ' . 'You are on homepage';
     }
+
     return $title;
 }
 
 
-add_filter('the_excerpt', function($excerpt) {
-    if (!is_single() && (is_archive() || is_home())) {
+add_filter( 'the_excerpt', function ( $excerpt ) {
+    if ( ! is_single() && ( is_archive() || is_home() ) ) {
         global $post;
-        return $excerpt. '<a href="' . get_permalink($post->ID) . '">
+
+        return $excerpt . '<a href="' . get_permalink( $post->ID ) . '">
                                   Learn More</a>';
     }
-    return $excerpt;
-});
 
-function critical_css():void {
+    return $excerpt;
+} );
+
+function critical_css(): void {
     wp_enqueue_style( 'critical', get_template_directory_uri() . '/resources/styles/critical.css', );
 }
+
 add_action( 'wp_enqueue_scripts', 'critical_css' );
 
 
+add_action( 'load_footer_assets', function () {
+    wp_enqueue_style( 'footer-styles', get_template_directory_uri() . '/resources/styles/styles.css' );
+} );
+add_action( 'wp_footer', function () {
+    do_action( 'load_footer_assets' );
+} );
 
-add_action('load_footer_assets', function () {
-    wp_enqueue_style('footer-styles', get_template_directory_uri() . '/resources/styles/styles.css');
-});
-add_action('wp_footer', function() {
-    do_action('load_footer_assets');
-});
-
-function single_post_message($classes) {
-    if (is_front_page() && is_home() && is_ssl()) {
+function single_post_message( $classes ) {
+    if ( is_front_page() && is_home() && is_ssl() ) {
         $classes[] = 'hey-dude-it-is-blog';
     }
+
     return $classes;
 }
-add_filter('body_class', 'single_post_message');
 
-function add_one_day_function($output): string {
-    $date = new DateTime($output);
-    $date->modify('+1 day');
-    return $date->format('Y-m-d');
+add_filter( 'body_class', 'single_post_message' );
+
+function add_one_day_function( $output ): string {
+    $date = new DateTime( $output );
+    $date->modify( '+1 day' );
+
+    return $date->format( 'Y-m-d' );
 }
-add_filter('add_one_day', 'add_one_day_function');
+
+add_filter( 'add_one_day', 'add_one_day_function' );
 function display_current_day_with_filter() {
-    $current_day = date('Y-m-d');
-    return apply_filters('add_one_day', $current_day);
+    $current_day = date( 'Y-m-d' );
+
+    return apply_filters( 'add_one_day', $current_day );
 }
-add_shortcode('current_day', 'display_current_day_with_filter');
-function allow_shortcodes_in_title($title): string {
-    return do_shortcode($title);
+
+add_shortcode( 'current_day', 'display_current_day_with_filter' );
+function allow_shortcodes_in_title( $title ): string {
+    return do_shortcode( $title );
 }
-add_filter('the_title', 'allow_shortcodes_in_title');
+
+add_filter( 'the_title', 'allow_shortcodes_in_title' );
 
 //add a taxonomy
 
@@ -157,6 +168,7 @@ function create_my_custom_taxonomy(): void {
     unset( $labels );
 
 }
+
 add_action( 'init', 'create_my_custom_taxonomy' );
 
 if ( file_exists( get_template_directory() . '/options.php' ) ) {
@@ -166,4 +178,33 @@ if ( file_exists( get_template_directory() . '/acf-custom-fields.php' ) ) {
     include get_template_directory() . '/acf-custom-fields.php';
 }
 
+// Handle the AJAX
+/**
+ * @throws Exception
+ */
+function get_time_in_locale(): void {
+    if ( ! check_ajax_referer( 'get_time_nonce', 'nonce', false ) ) {
+        wp_send_json_error( 'Invalid nonce' );
+
+        return;
+    }
+    $timezone     = $_POST['locale'] ?? 'Asia/Tashkent';
+    $current_time = wp_date( 'd-m-Y H:i:s', null, new DateTimeZone( $timezone ) );
+    wp_send_json_success( $current_time );
+}
+
+add_action( 'wp_ajax_get_time_in_locale', 'get_time_in_locale' );
+add_action( 'wp_ajax_nopriv_get_time_in_locale', 'get_time_in_locale' );
+
+function enqueue_time_locale_scripts(): void {
+    wp_enqueue_script( 'jquery' );
+    wp_enqueue_script( 'time-ajax', get_template_directory_uri() . '/resources/scripts/time-ajax.js', array( 'jquery' ),
+        '1.0', true );
+    wp_localize_script( 'time-ajax', 'timeAjax', array(
+        'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        'nonce'   => wp_create_nonce( 'get_time_nonce' )
+    ) );
+}
+
+add_action( 'wp_enqueue_scripts', 'enqueue_time_locale_scripts' );
 

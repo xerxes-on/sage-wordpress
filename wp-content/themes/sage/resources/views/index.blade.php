@@ -17,6 +17,7 @@
     @endwhile
   </div>
   {!! get_the_posts_navigation() !!}
+  @include('forms.get-time')
 @endsection
 
 @section('sidebar')
