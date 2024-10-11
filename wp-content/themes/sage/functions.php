@@ -218,20 +218,18 @@ add_action( 'rest_api_init', function () {
                     return rest_ensure_response( $string . $int );
                 },
             'permission_callback' => function ( $request ) {
-                    return isset( $request['key'] ) && $request['key'] === 'my_key';
+                    return isset( $request['key'] ) && $request['key'] === 'very_secure_key';
                 },
             'args'=> [
                 'string_param' => [
                     'required' => true,
-                    'validate_callback' => function ( $param ) {
-                        return is_string( $param ) && strlen( $param ) > 10;
-                    },
+                    'type' => 'string',
+                    'minLength' => 10
                 ],
                 'int_param'    => [
                     'required'          => true,
-                    'validate_callback' => function ( $param ) {
-                        return is_numeric( $param ) && intval( $param ) < 123;
-                    },
+                    'type'              => 'integer',
+                    'maximum'           => 123,
                 ],
             ]
         ]
